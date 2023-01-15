@@ -185,3 +185,14 @@ function saveScore(){
 
 //Start the quiz
 startBtn.addEventListener("click", startQuiz);
+
+//Click a answer button to go to next question
+
+reactButtonsAnswerOptions.forEach(function(click){
+    click.addEventListener("click",checkAnswer)
+});
+
+//save answer and go to next page
+submitBtn.addEventListener("click",function(event){
+    event.preventDefault();
+})
