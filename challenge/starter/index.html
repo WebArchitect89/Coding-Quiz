@@ -1,35 +1,56 @@
 <!DOCTYPE html>
 <html lang="en-gb">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Coding Quiz</title>
 
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Coding Quiz</title>
 
-  <body>
-    <div class="scores"><a href="highscores.html">View Highscores</a></div>
+  <link rel="stylesheet" href="./assets/css/styles.css" />
+</head>
 
-    <div class="timer">Time: <span id="time">0</span></div>
+<body>
+  <!--left corner to view high score-->
+  <div class="scores"><a href="highscores.html">View Highscores</a></div>
 
-    <div class="wrapper">
-      <div id="start-screen" class="start">
-        <h1>Coding Quiz Challenge</h1>
-        <p>
-          Try to answer the following code-related questions within the time
-          limit. Keep in mind that incorrect answers will penalize your
-          score/time by ten seconds!
-        </p>
-        <button id="start">Start Quiz</button>
+   <!--right corner to set a timer-->
+  <div class="timer">Time: <span id="time">60</span></div>
+
+              <!--introduction section-->
+  <div class="wrapper">
+    <div id="start-screen" class="start">
+      <h1>Coding Quiz Challenge</h1>
+      <p>
+        Try to answer the following code-related questions within the time
+        limit. Keep in mind that incorrect answers will penalize your
+        score/time by ten seconds!
+      </p>
+      <button id="start">Start Quiz</button>
+    </div>
+
+    <!--questions section-->
+    <div id="questions" class="hide">
+      <h2 id="question-title"></h2>
+     
+      <ul>
+        <li><button class="choices button" id="answer_btn1" value="a">Answer1</button></li>
+        <li><button class="choices button" id="answer_btn2" value="b">Answer2</button></li>
+        <li><button class="choices button" id="answer_btn3" value="c">Answer3</button></li>
+        <li><button class="choices button" id="answer_btn4" value="d">Answer4</button></li>
+      </ul>
+
+      <div>
+
+        <!--question check-->
+        <div id="check_line">
+          <p>Correct or Wrong</p>
+        </div>
+
       </div>
 
-      <div id="questions" class="hide">
-        <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
-      </div>
 
+        <!--final report section-->
       <div id="end-screen" class="hide">
         <h2>All done!</h2>
         <p>Your final score is <span id="final-score"></span>.</p>
@@ -42,7 +63,8 @@
       <div id="feedback" class="feedback hide"></div>
     </div>
 
-    <script src="./assets/js/questions.js"></script>
-    <script src="./assets/js/logic.js"></script>
-  </body>
+    <script src="../starter/assets/js/questions.js"></script>
+    <script src="../starter/assets/js/logic.js"></script>
+</body>
+
 </html>
