@@ -1,5 +1,7 @@
 //Questions Object
 
+
+console.log("Question")
 var questionSource = [
     {
         question: "Questions 1 : String values must be enclosed within _____ when being assigned to variables.",

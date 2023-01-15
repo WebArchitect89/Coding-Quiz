@@ -1,5 +1,5 @@
 //issues  check if works 
-// time
+
 // initials
 
 // Acceptance Criteria
@@ -14,6 +14,9 @@
 //      THEN the game is over
 //      WHEN the game is over
 //      THEN I can save my initials and my score
+
+console.log("Logic")
+
 
 //Defining Variables
 var welcome = document.querySelector("#start-screen");
@@ -38,11 +41,21 @@ var finalScore = document.querySelector("#final-score");
 var userInitial = document.querySelector("#initials");
 var submitBtn = document.querySelector("#submit");
 
+
+var highScorePage =document.querySelector("#highscore_results");
+var scoreRecord =document.querySelector("#score_record");
+var scoreCheck =document.querySelector("#scores");
+var finish =document.querySelector("#finish");
+var backBtn = document.querySelector("#back_btn");
+var clearBtn=document.querySelector("#clear_btn");
+
+
+
 //Other Variables
 
 var timeLeft = document.getElementById("timer");
 
-var secondsLeft = 60;
+var secondsLeft = 10;
 var questionNumber = 0;
 var totalScore = 0;
 var questionCount = 1;
@@ -56,17 +69,17 @@ function countdown() {
         secondsLeft--;
         timeLeft.textContent = " Time left " + secondsLeft + "s";
 
-        if (secondsLeft <= 0) {
+        if (secondsLeft <= 00) {
             clearInterval(timeInterval);
             timeLeft.textContent = "Time is Up";
             gameOver();
-
-        } else if (questionCount >= questionSource.length + 1) {
+         } else if (questionCount >= questionSource.length + 1) {
             clearInterval(timeInterval);
             gameOver();
         }
-    }, 1000)
+    }, 500)
 }
+
 
 // Click the start quiz button
 
@@ -121,18 +134,17 @@ function checkAnswer(event) {
 
 //WHEN all questions are answered or the timer reaches 0, Game is over
 
-function gameOver() {
+function gameOver(){
 
-    questionPage.style.display = "none";
     scoreBoard.style.display = "block";
     console.log(scoreBoard);
     // show final score
     finalScore.textContent = "Your final score is :" + totalScore;
-    // clearInterval(timerInterval);  
+    clearInterval(timerInterval);  
     timeLeft.style.display = "none";
 
 };
-
+ 
 // get the score and initials from local storage
 
 function getScore() {
@@ -142,39 +154,48 @@ function getScore() {
         return freshList;
     } else {
         freshList = [];
-    } return freshList;
+    } 
+    return freshList;
 };
 
 //calculate the score to the board
-function renderScore() {
-    scoreRecord.innerHTML = "";
-    scoreRecord.style.display = "block";
-    var highScores = sort();
-    // Slice the high score array to only show the top five high scores.
-    var topFive = highScores.slice(0, 5);
-    for (var i = 0; i < topFive.length; i++) {
-        var item = topFive[i];
-        //show the score list on the score board
-        var li = document.createElement("li");
-        li.textContent = item.user + " - " + item.score;
-        li.setAttribute("data-index", i);
-        scoreRecord.appendChild(li);
-    }
-};
+// function renderScore() {
+//     scoreRecord.innerHTML = "";
+//     scoreRecord.style.display = "block";
+//     var highScores = sort();
+//     // Slice the high score array to only show the top five high scores.
+//     // var topFive = highScores.slice(0, 5);
+//     for (var i = 0; i < topFive.length; i++) {
+//         var item = topFive[i];
+//         // show the score list on the score board
+//         var li = document.createElement("li");
+//         li.textContent = item.user + " - " + item.score;
+//         li.setAttribute("data-index", i);
+//         scoreRecord.appendChild(li);
+//     }
+// };
 
 // sort score and ranking the highscore list
 
-function sort() {
-    var unsortedList = getScore();
-    if (getScore == null) {
-        return;
-    } else {
-        unsortedList.sort(function (a, b) {
-            return b.score - a.score;
-        })
-        return unsortedList;
-    }
-};
+// function sort() {
+//     var unsortedList = getScore();
+//     if (getScore == null) {
+//         return;
+//     } else {
+//         unsortedList.sort(function (a, b) {
+//             return b.score - a.score;
+//         })
+//         return unsortedList;
+//     }
+// };
+// push new score and initial to the local storage
+
+// function addItem(n) {
+//     var addedList = getScore();
+//     addedList.push(n);
+//     localStorage.setItem("ScoreList", JSON.stringify(addedList));
+
+// };
 
 function saveScore() {
     var scoreItem = {
@@ -229,7 +250,7 @@ backBtn.addEventListener("click", function(event){
 
 });
 
-//clear local storage and clear page shows
+// //clear local storage and clear page shows
 clearBtn.addEventListener("click",function(event){
     event.preventDefault();
     localStorage.clear();
