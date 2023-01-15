@@ -76,13 +76,13 @@ function startQuiz() {
 
 //Questions and answers
 
-function showQuestion (n){
-askQuestion.textContent = questionSource[n].question;
-answerBtn1.textContent = questionSource[n].choices[0];
-answerBtn2.textContent = questionSource[n].choices[1];
-answerBtn3.textContent = questionSource[n].choices[2];
-answerBtn4.textContent = questionSource[n].choices[3];
-questionNumber = n;
+function showQuestion(n) {
+    askQuestion.textContent = questionSource[n].question;
+    answerBtn1.textContent = questionSource[n].choices[0];
+    answerBtn2.textContent = questionSource[n].choices[1];
+    answerBtn3.textContent = questionSource[n].choices[2];
+    answerBtn4.textContent = questionSource[n].choices[3];
+    questionNumber = n;
 
 }
 
@@ -98,42 +98,42 @@ function checkAnswer(event) {
 
     // answer check
     if (questionSource[questionNumber].answer == event.target.value) {
-        checkLine.textContent = "Correct!"; 
+        checkLine.textContent = "Correct!";
         totalScore = totalScore + 1;
 
     } else {
         secondsLeft = secondsLeft - 10;
         checkLine.textContent = "Wrong! The correct answer is " + questionSource[questionNumber].answer + " .";
     }
-         //THEN I am presented with another question
-    if (questionNumber < questionSource.length -1 ) {
-    // call showQuestions to bring in next question when any reactBtn is clicked
-        showQuestion(questionNumber +1);
+    //THEN I am presented with another question
+    if (questionNumber < questionSource.length - 1) {
+        // call showQuestions to bring in next question when any reactBtn is clicked
+        showQuestion(questionNumber + 1);
     } else {
-    gameOver();
-}
-questionCount++;
+        gameOver();
+    }
+    questionCount++;
 }
 
 //WHEN all questions are answered or the timer reaches 0, Game is over
 
-function gameOver(){
+function gameOver() {
 
     questionPage.style.display = "none";
     scoreBoard.style.display = "block";
     console.log(scoreBoard);
     // show final score
-    finalScore.textContent = "Your final score is :" + totalScore ;
+    finalScore.textContent = "Your final score is :" + totalScore;
     // clearInterval(timerInterval);  
-    timeLeft.style.display = "none"; 
+    timeLeft.style.display = "none";
 
 };
 
 // get the score and initials from local storage
 
-function getScore (){
+function getScore() {
     var currentList = localStorage.getItem("Score List");
-    if (currentList !== null){
+    if (currentList !== null) {
         freshList = JSON.parse(currentList);
         return freshList;
     } else {
@@ -142,8 +142,46 @@ function getScore (){
 };
 
 //calculate the score to the board
+function renderScore() {
+    scoreRecord.innerHTML = "";
+    scoreRecord.style.display = "block";
+    var highScores = sort();
+    // Slice the high score array to only show the top five high scores.
+    var topFive = highScores.slice(0, 5);
+    for (var i = 0; i < topFive.length; i++) {
+        var item = topFive[i];
+        //show the score list on the score board
+        var li = document.createElement("li");
+        li.textContent = item.user + " - " + item.score;
+        li.setAttribute("data-index", i);
+        scoreRecord.appendChild(li);
+    }
+};
 
+// sort score and ranking the highscore list
 
+function sort() {
+    var unsortedList = getScore();
+    if (getScore == null) {
+        return;
+    } else {
+        unsortedList.sort(function (a, b) {
+            return b.score - a.score;
+        })
+        return unsortedList;
+    }
+};
+
+function saveScore(){
+    var scoreItem = {
+        user: userInitial.value,
+        score: totalScore
+    }
+    addItem(scoreItem);
+    renderScore();
+}
 
 //event listeners
+
+//Start the quiz
 startBtn.addEventListener("click", startQuiz);
