@@ -1,3 +1,7 @@
+//issues  check if works 
+// time
+// initials
+
 // Acceptance Criteria
 //      GIVEN I am taking a code quiz
 //      WHEN I click the start button
@@ -225,3 +229,9 @@ backBtn.addEventListener("click", function(event){
 
 });
 
+//clear local storage and clear page shows
+clearBtn.addEventListener("click",function(event){
+    event.preventDefault();
+    localStorage.clear();
+    renderScore();
+});
