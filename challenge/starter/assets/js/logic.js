@@ -67,6 +67,8 @@ function countdown() {
 // Click the start quiz button
 
 function startQuiz() {
+    welcome.style.display = "none";
+    questionPage.style.display = "block";
     questionNumber = 0
     countdown();
     showQuestion(questionNumber);
@@ -112,3 +114,31 @@ function checkAnswer(event) {
 }
 questionCount++;
 }
+
+//WHEN all questions are answered or the timer reaches 0, Game is over
+
+function gameOver(){
+
+    questionPage.style.display = "none";
+    scoreBoard.style.display = "block";
+    console.log(scoreBoard);
+    // show final score
+    finalScore.textContent = "Your final score is :" + totalScore ;
+    // clearInterval(timerInterval);  
+    timeLeft.style.display = "none"; 
+
+};
+
+// get the score and initials from local storage
+
+function getScore (){
+    var currentList = localStorage.getItem("Score List");
+    if (currentList !== null){
+        freshList = JSON.parse(currentList);
+        return freshList;
+    } else {
+        freshList = [];
+    } return freshList;
+};
+
+//calculate the score to the board
