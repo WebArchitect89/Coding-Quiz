@@ -197,6 +197,18 @@ submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
     scoreBoard.style.display = "none";
     welcome.style.display = "none";
+    highScores.style.display = "block";
+    questionPage.style.display = "none";
     saveScore();
 });
 
+// check highscore ranking list
+
+scoreCheck.addEventListener("Click",function(event){
+    event.preventDefault();
+    scoreBoard.style.display = "none";
+    welcome.style.display = "none";
+    highScores.style.display = "block";
+    questionPage.style.display = "none";
+    renderScore();
+});
