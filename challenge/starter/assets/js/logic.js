@@ -1,7 +1,3 @@
-//issues  check if works 
-
-// initials
-
 // Acceptance Criteria
 //      GIVEN I am taking a code quiz
 //      WHEN I click the start button
@@ -55,7 +51,7 @@ var clearBtn=document.querySelector("#clear_btn");
 
 var timeLeft = document.getElementById("timer");
 
-var secondsLeft = 10;
+var secondsLeft = 60;
 var questionNumber = 0;
 var totalScore = 0;
 var questionCount = 1;
@@ -157,45 +153,6 @@ function getScore() {
     } 
     return freshList;
 };
-
-//calculate the score to the board
-// function renderScore() {
-//     scoreRecord.innerHTML = "";
-//     scoreRecord.style.display = "block";
-//     var highScores = sort();
-//     // Slice the high score array to only show the top five high scores.
-//     // var topFive = highScores.slice(0, 5);
-//     for (var i = 0; i < topFive.length; i++) {
-//         var item = topFive[i];
-//         // show the score list on the score board
-//         var li = document.createElement("li");
-//         li.textContent = item.user + " - " + item.score;
-//         li.setAttribute("data-index", i);
-//         scoreRecord.appendChild(li);
-//     }
-// };
-
-// sort score and ranking the highscore list
-
-// function sort() {
-//     var unsortedList = getScore();
-//     if (getScore == null) {
-//         return;
-//     } else {
-//         unsortedList.sort(function (a, b) {
-//             return b.score - a.score;
-//         })
-//         return unsortedList;
-//     }
-// };
-// push new score and initial to the local storage
-
-// function addItem(n) {
-//     var addedList = getScore();
-//     addedList.push(n);
-//     localStorage.setItem("ScoreList", JSON.stringify(addedList));
-
-// };
 
 function saveScore() {
     var scoreItem = {
