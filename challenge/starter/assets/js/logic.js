@@ -212,3 +212,16 @@ scoreCheck.addEventListener("Click",function(event){
     questionPage.style.display = "none";
     renderScore();
 });
+
+//go to the main page
+
+backBtn.addEventListener("click", function(event){
+    event.preventDefault();
+    scoreBoard.style.display = "none";
+    welcome.style.display = "block";
+    highScores.style.display = "none";
+    questionPage.style.display = "none";
+    location.reload();
+
+});
+
