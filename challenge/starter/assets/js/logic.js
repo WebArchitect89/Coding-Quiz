@@ -172,7 +172,7 @@ function sort() {
     }
 };
 
-function saveScore(){
+function saveScore() {
     var scoreItem = {
         user: userInitial.value,
         score: totalScore
@@ -188,11 +188,15 @@ startBtn.addEventListener("click", startQuiz);
 
 //Click a answer button to go to next question
 
-reactButtonsAnswerOptions.forEach(function(click){
-    click.addEventListener("click",checkAnswer)
+reactButtonsAnswerOptions.forEach(function (click) {
+    click.addEventListener("click", checkAnswer)
 });
 
 //save answer and go to next page
-submitBtn.addEventListener("click",function(event){
+submitBtn.addEventListener("click", function (event) {
     event.preventDefault();
-})
+    scoreBoard.style.display = "none";
+    welcome.style.display = "none";
+    saveScore();
+});
+
