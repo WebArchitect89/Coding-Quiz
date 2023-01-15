@@ -142,3 +142,8 @@ function getScore (){
 };
 
 //calculate the score to the board
+
+
+
+//event listeners
+startBtn.addEventListener("click", startQuiz);
