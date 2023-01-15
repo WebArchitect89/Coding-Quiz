@@ -99,6 +99,8 @@ function showQuestion(n) {
 
 }
 
+
+
 //Is answer right or wrong
 
 function checkAnswer(event) {
@@ -199,7 +201,7 @@ scoreCheck.addEventListener("Click",function(event){
 
 backBtn.addEventListener("click", function(event){
     event.preventDefault();
-    scoreBoard.style.display = "none";
+    scoreBoard.style.display = "block";
     welcome.style.display = "block";
     highScores.style.display = "none";
     questionPage.style.display = "none";
