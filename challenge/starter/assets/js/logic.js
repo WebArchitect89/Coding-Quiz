@@ -84,3 +84,31 @@ questionNumber = n;
 
 }
 
+//Is answer right or wrong
+
+function checkAnswer(event) {
+    event.preventDefault();
+    //make it display
+    checkLine.style.display = "block";
+    setTimeout(function () {
+        checkLine.style.display = 'none';
+    }, 1000);
+
+    // answer check
+    if (questionSource[questionNumber].answer == event.target.value) {
+        checkLine.textContent = "Correct!"; 
+        totalScore = totalScore + 1;
+
+    } else {
+        secondsLeft = secondsLeft - 10;
+        checkLine.textContent = "Wrong! The correct answer is " + questionSource[questionNumber].answer + " .";
+    }
+         //THEN I am presented with another question
+    if (questionNumber < questionSource.length -1 ) {
+    // call showQuestions to bring in next question when any reactBtn is clicked
+        showQuestion(questionNumber +1);
+    } else {
+    gameOver();
+}
+questionCount++;
+}
